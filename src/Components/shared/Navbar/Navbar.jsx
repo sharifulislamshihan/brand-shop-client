@@ -1,36 +1,60 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+
+
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = () =>{
+        setIsMenuOpen(!isMenuOpen);
+    }
+
+    const NavLinks = <>
+        <NavLink to="/" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">HOME</li></NavLink>
+
+        <NavLink to="/about" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">ABOUT</li></NavLink>
+
+        <NavLink to="/services" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">SERVICES</li></NavLink>
+
+        <NavLink to="/gallery" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">GALLERY</li></NavLink>
+
+        <NavLink to="/contact" activeClassName="active"><li className="text-lg  font-semibold font-heading my-2 mx-5 hover:text-red-600 ">CONTACT</li></NavLink>
+
+    </>
     return (
-        <div>
-            <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
-                <div className="container flex justify-between h-16 mx-auto">
-                    <Link to='/'><img className="flex items-center p-2" src="https://i.ibb.co/sVTH7Z8/car-menia-logo.jpg" alt="logo" /></Link>
-                    <ul className="items-stretch hidden space-x-3 lg:flex">
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Link</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Link</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Link</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Link</a>
-                        </li>
-                    </ul>
-                    <div className="items-center flex-shrink-0 hidden lg:flex">
-                        <button className="self-center px-8 py-3 rounded">Sign in</button>
-                        <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Sign up</button>
+        <div className="">
+            <div className="navbar">
+                <div className="navbar-start">
+                    <div className="dropdown relative overflow-visible">
+                        <label tabIndex={0} onClick={toggleMenu} className="btn btn-ghost lg:hidden menu-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52 absolute z-10  ${isMenuOpen ? 'visible' : 'hidden'}`}>
+                            {NavLinks}
+                        </ul>
                     </div>
-                    <button className="p-4 lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                    <img className="w-24 md:w-40 mx-auto mr-10 md:ml-12 " src="https://i.ibb.co/RHGsT6D/logo-removebg.png" alt="" />
                 </div>
-            </header>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1">
+                        {NavLinks}
+                    </ul>
+                </div>
+                <div className="navbar-end">
+                    {/* {
+                        user ? <div className="flex">
+                            <img className="w-16 h-16 mt-5 rounded-lg" src={user?.photoURL} alt="no img" />
+                            <span className="mr-5 text-2xl font-pacifico hidden md:block">Hey!! {user?.displayName}</span>
+                            <Link to='/login'><a className="btn border-black font-heading font-bold text-base md:text-xl">Logout</a></Link>
+                        </div>
+                            :
+                            <Link to='/login'><a className="btn border-black font-heading font-bold text-base md:text-xl">LogIn</a></Link>
+                            
+                    } */}
+                    <Link to='/register'><a className="font-heading font-semibold text-base mx-3 md:text-xl hover:text-red-500">Register</a></Link>
+                    <Link to='/login'><a className="font-heading font-semibold text-base mx-5 md:text-xl hover:text-red-500">LogIn</a></Link>
+                </div>
+            </div>
         </div>
     );
 };
