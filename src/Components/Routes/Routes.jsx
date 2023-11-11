@@ -9,6 +9,11 @@ import Collection from "../Collection/Collection";
 import AboutUs from "../AboutUs/AboutUs";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import UpdatePhone from "../UpdatePhone/UpdatePhone";
+import Apple from "../BrandPhoneCollection/Apple/Apple";
+import Google from "../BrandPhoneCollection/Google/Google";
+import Oppo from "../BrandPhoneCollection/Oppo/Oppo";
+import Samsung from "../BrandPhoneCollection/Samsung/Samsung";
+import Sony from "../BrandPhoneCollection/Sony/Sony";
 
 
 const Routes = createBrowserRouter([
@@ -35,6 +40,26 @@ const Routes = createBrowserRouter([
             {
                 path: "/collection",
                 element: <Collection></Collection>,
+            },
+            {
+                path:'/apple',
+                element: <Apple></Apple>
+            },
+            {
+                path: "/google",
+                element:<Google></Google>,
+            },
+            {
+                path: '/oppo',
+                element: <Oppo></Oppo>
+            },
+            {
+                path: '/samsung',
+                element: <Samsung></Samsung>
+            },
+            {
+                path: '/sony',
+                element: <Sony></Sony>
             },
             {
                 path: '/aboutUs',
