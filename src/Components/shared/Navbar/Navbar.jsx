@@ -14,7 +14,7 @@ const Navbar = () => {
 
         <NavLink to="/collection" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">COLLECTION</li></NavLink>
 
-        <NavLink to="/addProduct" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">ADD PRODUCT</li></NavLink>
+        <NavLink to="/addPhone" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">ADD PHONE</li></NavLink>
 
         <NavLink to="/aboutUs" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">ABOUT US</li></NavLink>
 
@@ -51,8 +51,8 @@ const Navbar = () => {
                             <Link to='/login'><a className="btn border-black font-heading font-bold text-base md:text-xl">LogIn</a></Link>
                             
                     } */}
-                    <Link to='/register'><a className="font-heading font-semibold text-base mx-3 md:text-xl hover:text-red-500">Register</a></Link>
-                    <Link to='/login'><a className="font-heading font-semibold text-base mx-5 md:text-xl hover:text-red-500">LogIn</a></Link>
+                    <Link to='/signup'><a className="font-heading font-semibold text-base mx-3 md:text-xl hover:text-red-500">Register</a></Link>
+                    <Link to='/signin'><a className="font-heading font-semibold text-base mx-5 md:text-xl hover:text-red-500">LogIn</a></Link>
                 </div>
             </div>
         </div>
