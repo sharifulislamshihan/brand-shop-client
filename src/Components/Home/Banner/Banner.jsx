@@ -10,7 +10,6 @@ import './style.css';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
-import { useEffect } from 'react';
 
 const images = [
     {
@@ -41,7 +40,7 @@ const images = [
 
 const Banner = () => {
 
-  
+
 
     return (
         <div>
@@ -54,22 +53,24 @@ const Banner = () => {
                 }}
                 navigation={true}
                 modules={[Pagination, Navigation]}
-                className="mySwiper"
+                className="relative"
             >
                 {
                     images.map(image => (
                         <SwiperSlide key={image.id}>
                             <div className='relative'>
-                                <img src={image.imgUrl} alt={`Slide No: ${image.id}`} />
+                                <img src={image.imgUrl} alt={`Slide No: ${image.id}hidden md:visible`} />
                             </div>
                             <div
-                                className={`absolute p-4 ${image.position === 'left' ? 'right-96' : 'left-96'
-                                    } top-1/2 transform -translate-y-1/2`}
+                                className={`absolute p-4 ${image.position === 'left' ? 'mx-auto md:right-96' : ' mx-auto md:left-96'
+                                    } top-1/2 transform -translate-y-1/2 `}
                             >
-                                <h2 className={`text-4xl font-paragraph ${image.position === 'left' ? 'text-black' : 'text-white'} font-bold mb-4`}>{image.heading1}</h2>
-                                <h2 className={`text-7xl font-heading ${image.position === 'left' ? 'text-black' : 'text-white'} font-bold mb-4`}>{image.heading2}</h2>
+                                <div className='mx-2'>
+                                    <h2 className={`text-sm md:text-xl lg:text-4xl font-paragraph ${image.position === 'left' ? 'text-black' : 'text-white'} font-bold mb-4`}>{image.heading1}</h2>
+                                    <h2 className={`text-base md:text-5xl lg:text-7xl font-heading ${image.position === 'left' ? 'text-black' : 'text-white'} font-bold mb-4`}>{image.heading2}</h2>
+                                </div>
 
-                                <button className={` ${image.position === 'left' ? 'text-black bg-white border border-black' : 'text-white bg-black border border-white'} rounded-full py-3 px-7 hover:bg-red-600 hover:border-red-500`}>
+                                <button className={` ${image.position === 'left' ? 'text-black bg-white border border-black' : 'text-white bg-black border border-white'} rounded-full text-sm md:text-lg lg:text-xl py-2 md:py-3 px-5 md:px-7 hover:bg-red-600 hover:border-red-500`}>
                                     {image.buttonText}
                                 </button>
                             </div>
