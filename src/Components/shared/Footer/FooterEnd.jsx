@@ -2,7 +2,7 @@ import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
 
 const FooterEnd = () => {
     return (
-        <div>
+        <div className="py-2">
             <div className="grid justify-center pt-6 lg:justify-between lg:mx-32 mb-3">
                 <div className="flex flex-col  text-center md:block lg:col-start-1 md:space-x-6 text-xl">
                     <span>©2023 All rights reserved</span>

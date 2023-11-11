@@ -12,13 +12,13 @@ const Navbar = () => {
     const NavLinks = <>
         <NavLink to="/" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">HOME</li></NavLink>
 
-        <NavLink to="/about" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">ABOUT</li></NavLink>
+        <NavLink to="/collection" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">COLLECTION</li></NavLink>
 
-        <NavLink to="/services" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">SERVICES</li></NavLink>
+        <NavLink to="/addProduct" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">ADD PRODUCT</li></NavLink>
 
-        <NavLink to="/gallery" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">GALLERY</li></NavLink>
+        <NavLink to="/aboutUs" activeClassName="active"><li className="text-lg  font-semibold font-heading  my-2 mx-5 hover:text-red-600 ">ABOUT US</li></NavLink>
 
-        <NavLink to="/contact" activeClassName="active"><li className="text-lg  font-semibold font-heading my-2 mx-5 hover:text-red-600 ">CONTACT</li></NavLink>
+        <NavLink to="/myCart" activeClassName="active"><li className="text-lg  font-semibold font-heading my-2 mx-5 hover:text-red-600 ">MY CART</li></NavLink>
 
     </>
     return (
