@@ -14,19 +14,19 @@ import { Pagination, Navigation } from 'swiper/modules';
 const images = [
     {
         id: 1,
-        imgUrl: 'https://i.ibb.co/Nr4SWpX/Apple-i-Phone-slider1.jpg',
+        imgUrl: 'https://i.ibb.co/J2885Zc/oppo-1.jpg',
     },
     {
         id: 2,
-        imgUrl: 'https://i.ibb.co/1GzmfsL/apple-i-Phone-slider2.png',
+        imgUrl: 'https://i.ibb.co/KLHyXxc/oppo-2.jpg',
     },
     {
         id: 3,
-        imgUrl: 'https://i.ibb.co/9nRrLzN/i-Phone-XR-ad.jpg',
+        imgUrl: 'https://i.ibb.co/zmMQRgr/oppo-4.jpg',
     },
     {
         id: 4,
-        imgUrl: 'https://i.ibb.co/k59qvRN/Apple-iphone-slider4.jpg',
+        imgUrl: 'https://i.ibb.co/L6hh5CB/oppo-3.jpg',
     },
     
 ];

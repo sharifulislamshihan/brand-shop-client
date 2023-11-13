@@ -14,19 +14,19 @@ import { Pagination, Navigation } from 'swiper/modules';
 const images = [
     {
         id: 1,
-        imgUrl: 'https://i.ibb.co/Nr4SWpX/Apple-i-Phone-slider1.jpg',
+        imgUrl: 'https://i.ibb.co/MCV8VgY/Samsung-1.png',
     },
     {
         id: 2,
-        imgUrl: 'https://i.ibb.co/1GzmfsL/apple-i-Phone-slider2.png',
+        imgUrl: 'https://i.ibb.co/c2kgrWc/Samsung-2.png',
     },
     {
         id: 3,
-        imgUrl: 'https://i.ibb.co/9nRrLzN/i-Phone-XR-ad.jpg',
+        imgUrl: 'https://i.ibb.co/cJVhpL1/samsung-3.png',
     },
     {
         id: 4,
-        imgUrl: 'https://i.ibb.co/k59qvRN/Apple-iphone-slider4.jpg',
+        imgUrl: 'https://i.ibb.co/JnwGmbc/samsung-4.jpg',
     },
     
 ];

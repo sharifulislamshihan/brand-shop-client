@@ -14,19 +14,19 @@ import { Pagination, Navigation } from 'swiper/modules';
 const images = [
     {
         id: 1,
-        imgUrl: 'https://i.ibb.co/Nr4SWpX/Apple-i-Phone-slider1.jpg',
+        imgUrl: 'https://i.ibb.co/sWrngpV/Pixel-1.jpg',
     },
     {
         id: 2,
-        imgUrl: 'https://i.ibb.co/1GzmfsL/apple-i-Phone-slider2.png',
+        imgUrl: 'https://i.ibb.co/hss7RNj/Pixel-2.jpg',
     },
     {
         id: 3,
-        imgUrl: 'https://i.ibb.co/9nRrLzN/i-Phone-XR-ad.jpg',
+        imgUrl: 'https://i.ibb.co/0hK7z5X/Pixel-3.jpg',
     },
     {
         id: 4,
-        imgUrl: 'https://i.ibb.co/k59qvRN/Apple-iphone-slider4.jpg',
+        imgUrl: 'https://i.ibb.co/09CMh1J/pixel-4.jpg',
     },
     
 ];

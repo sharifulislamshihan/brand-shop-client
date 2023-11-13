@@ -40,6 +40,7 @@ const Routes = createBrowserRouter([
             {
                 path: "/collection",
                 element: <Collection></Collection>,
+                loader: () => fetch('http://localhost:5000/phones')
             },
             {
                 path:'/apple',
