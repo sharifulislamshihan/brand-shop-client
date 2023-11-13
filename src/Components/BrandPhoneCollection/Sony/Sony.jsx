@@ -1,8 +1,9 @@
+import SonySlider from "./SonySlider";
 
 const Sony = () => {
     return (
         <div>
-            <h3>Sony</h3>
+            <SonySlider></SonySlider>
         </div>
     );
 };

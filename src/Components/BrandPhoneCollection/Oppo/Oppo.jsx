@@ -1,8 +1,9 @@
+import OppoSlider from "./OppoSlider";
 
 const Oppo = () => {
     return (
         <div>
-            <h3>Oppo</h3>
+            <OppoSlider></OppoSlider>
         </div>
     );
 };

@@ -3,7 +3,7 @@
 const Google = () => {
     return (
         <div>
-            
+            <GoogleSlider></GoogleSlider>
         </div>
     );
 };

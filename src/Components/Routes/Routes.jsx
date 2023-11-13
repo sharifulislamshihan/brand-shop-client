@@ -43,23 +43,28 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'/apple',
-                element: <Apple></Apple>
+                element: <Apple></Apple>,
+                loader: () => fetch('http://localhost:5000/phones')
             },
             {
                 path: "/google",
                 element:<Google></Google>,
+                loader: () => fetch('http://localhost:5000/phones')
             },
             {
                 path: '/oppo',
-                element: <Oppo></Oppo>
+                element: <Oppo></Oppo>,
+                loader: () => fetch('http://localhost:5000/phones'),
             },
             {
                 path: '/samsung',
-                element: <Samsung></Samsung>
+                element: <Samsung></Samsung>,
+                loader: () => fetch('http://localhost:5000/phones'),
             },
             {
                 path: '/sony',
-                element: <Sony></Sony>
+                element: <Sony></Sony>,
+                loader: () => fetch('http://localhost:5000/phones'),
             },
             {
                 path: '/aboutUs',

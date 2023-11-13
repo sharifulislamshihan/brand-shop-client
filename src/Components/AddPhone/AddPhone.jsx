@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 const AddPhone = () => {
 
@@ -13,10 +14,26 @@ const AddPhone = () => {
         const newPhone = {name, brandName, price, type, details, photo};
         console.log(newPhone);
 
-
+        // send phone data to server
+        fetch('http://localhost:5000/phones', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newPhone)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire("Phone added successfully!");
+            }
+            form.reset();
+        })
     }
     return (
         <div>
+            
             <h3 className="text-5xl font-paragraph font-bold text-center my-9">Add Phone</h3>
             <div className=" mx-12 lg:mx-40">
                 <form onSubmit={handleAddPhone}>

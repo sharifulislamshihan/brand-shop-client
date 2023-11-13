@@ -1,9 +1,10 @@
+import SamsungSlider from "./SamsungSlider";
 
 
 const Samsung = () => {
     return (
         <div>
-            <h3>samsung phone</h3>
+            <SamsungSlider></SamsungSlider>
         </div>
     );
 };
