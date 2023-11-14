@@ -1,6 +1,10 @@
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdatePhone = () => {
+    const phoneData = useLoaderData()
+    console.log(phoneData);
     const handleUpdatePhone = e => {
         e.preventDefault();
         const form = e.target;
@@ -13,11 +17,27 @@ const UpdatePhone = () => {
         const updatePhone = { name, brandName, price, type, details, photo };
         console.log(updatePhone);
 
+        fetch(`http://localhost:5000/phones/${phoneData._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatePhone)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    Swal.fire('Product Information Updated Successfully!')
+                }
+
+            })
+
 
     }
     return (
         <div>
-            <h3 className="text-5xl font-paragraph font-bold text-center my-9">Update Phone</h3>
+            <h3 className="text-5xl font-paragraph font-bold text-center my-9">Update Phone: <span className="text-slate-500">{phoneData.name}</span></h3>
             <div className=" mx-12 lg:mx-40">
                 <form onSubmit={handleUpdatePhone}>
                     {/* name and chef */}
@@ -29,7 +49,7 @@ const UpdatePhone = () => {
                                 <span className="label-text text-xl font-raleway  font-bold">Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="name" placeholder="Name" className="input input-bordered w-full" required />
+                                <input type="text" name="name" defaultValue={phoneData.name} placeholder="Name" className="input input-bordered w-full" required />
                             </label>
                         </div>
 
@@ -39,7 +59,7 @@ const UpdatePhone = () => {
                                 <span className="label-text text-xl font-raleway  font-bold ">Brand Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="brandName" placeholder="Brand Name" className="input input-bordered w-full" required />
+                                <input type="text" name="brandName" placeholder="Brand Name" defaultValue={phoneData?.brandName} className="input input-bordered w-full" required />
                             </label>
                         </div>
                     </div>
@@ -54,7 +74,7 @@ const UpdatePhone = () => {
                                 <span className="label-text text-xl font-raleway  font-bold ">Type</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="type" placeholder="Type" className="input input-bordered w-full" required />
+                                <input type="text" name="type" placeholder="Type" defaultValue={phoneData?.type} className="input input-bordered w-full" required />
                             </label>
                         </div>
 
@@ -64,7 +84,7 @@ const UpdatePhone = () => {
                                 <span className="label-text text-xl font-raleway  font-bold">Price</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="price" placeholder="Price" className="input input-bordered w-full" required />
+                                <input type="text" name="price" defaultValue={phoneData?.price} placeholder="Price" className="input input-bordered w-full" required />
                             </label>
                         </div>
                     </div>
@@ -79,7 +99,7 @@ const UpdatePhone = () => {
                                 <span className="label-text text-xl font-raleway  font-bold ">Details</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="details" placeholder="Details" className="input input-bordered w-full" />
+                                <input type="text" name="details" placeholder="Details" defaultValue={phoneData?.details} className="input input-bordered w-full" />
                             </label>
                         </div>
 
@@ -89,7 +109,7 @@ const UpdatePhone = () => {
                                 <span className="label-text text-xl font-raleway  font-bold">Photo URL</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" required />
+                                <input type="text" name="photo" defaultValue={phoneData?.photo} placeholder="Photo URL" className="input input-bordered w-full" required />
                             </label>
                         </div>
                     </div>

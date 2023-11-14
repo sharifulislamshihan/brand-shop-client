@@ -30,8 +30,9 @@ const Routes = createBrowserRouter([
                 element: <AddPhone></AddPhone>,
             },
             {
-                path:'/updatePhone',
-                element: <UpdatePhone></UpdatePhone>
+                path:'/updatePhone/:id',
+                element: <UpdatePhone></UpdatePhone>,
+                loader: ({params}) => fetch(`http://localhost:5000/phones/${params.id}`)
             },
             {
                 path: "/myCart",

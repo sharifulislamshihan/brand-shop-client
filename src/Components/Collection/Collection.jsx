@@ -1,15 +1,20 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { FaBitbucket, FaEye, FaPen, FaSearch } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Collection = () => {
     const phonesData = useLoaderData();
+    console.log(phonesData);
     const itemsPerPage = 12;
 
     // this useState useed for load more button visibility
     const [visible, setVisible] = useState(itemsPerPage);
     // this useState using for searching phone/accesories
     const [searchPhones, setSearchPhones] = useState('');
+
+    // to count rest of the data after delete one
+    const [phones, setPhones] = useState(phonesData);
 
     // loadmore funtion
     const loadMore = () => {
@@ -21,13 +26,44 @@ const Collection = () => {
         setSearchPhones(e.target.value);
     }
 
-
     const filterData = phonesData.filter(
         item =>
             item.name.toLowerCase().includes(searchPhones.toLowerCase()) ||
             item.brandName.toLowerCase().includes(searchPhones.toLowerCase())
     );
-    console.log(filterData.length);
+
+    //const { _id } = filterData;
+    const handleDelete = id => {
+        console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/phones/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your product has been deleted.",
+                                icon: "success"
+                            });
+                            const remaining = phones.filter(phone => phone._id !== id);
+                            setPhones(remaining);
+                        }
+                    })
+            }
+        });
+    }
     return (
         <div>
             <div className="relative bg-cover bg-center bg-[url('https://i.ibb.co/ZGQkzw0/Collection-banner.jpg')] max-h-screen">
@@ -37,12 +73,16 @@ const Collection = () => {
                     <h2 className="text-2xl md:text-4xl font-heading font-medium mb-12">SEARCH YOUR PHONE NOW</h2>
 
                     <div>
+
                         <div onChange={handleSearchPhones} className="form-control">
+
                             <div className="input-group flex justify-center ">
                                 <input className="input input-bordered text-black join-item" type="text" name="text" placeholder="Search..." />
                                 <button className="btn join-item rounded-r-full"><FaSearch className="text-xl"></FaSearch></button>
                             </div>
+
                         </div>
+
                     </div>
 
                 </div>
@@ -59,6 +99,7 @@ const Collection = () => {
                         <div key={item.id} >
                             <div className="card lg:card-side bg-base-100 h-full hover:shadow-xl my-4">
                                 <figure><img className="w-48" src={item.photo} alt="Shoes" /></figure>
+
                                 <div className="card-body">
                                     <h2 className="card-title text-2xl font-bold font-heading text-black">{item.name}</h2>
                                     <h3 className="text-lg font-bold font-heading text-slate-600">Brand: <span className="text-xl">{item.brandName}</span></h3>
@@ -66,13 +107,17 @@ const Collection = () => {
                                     <div className="card-actions flex justify-between mt-4 ">
                                         <div className="join join-horizontal gap-3 md:gap-6 mx-auto">
                                             <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaEye></FaEye></button>
-                                            <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaPen></FaPen></button>
-                                            <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaBitbucket></FaBitbucket></button>
+                                            {/* to={`/updatePhone/${_id}`}> */}
+                                            <Link to={`/updatePhone/${item._id}`} >
+                                                <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaPen></FaPen></button>
+                                            </Link>
+                                            <button
+                                                onClick={() => handleDelete(item.id)}
+                                                className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaBitbucket></FaBitbucket></button>
                                         </div>
                                     </div>
-
-
                                 </div>
+
                             </div>
                         </div>
                     ))
