@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import AppleSlider from "./AppleSlider";
 import { useState } from "react";
 
@@ -31,7 +31,9 @@ const Apple = () => {
                                     <h3 className="text-lg font-bold font-heading text-slate-600">Brand: <span className="text-xl">{item.brandName}</span></h3>
                                     <h3 className="text-lg font-bold font-heading text-slate-600">Price: <span className="text-xl">{item.price}</span></h3>
                                     <div className="card-actions flex justify-between mt-4 ">
-                                        <button className="btn btn-primary">Details</button>
+                                        <Link to={`/phoneDetails/${item._id}`}>
+                                            <button className="btn btn-primary">Details</button>
+                                        </Link>
                                         <button className="btn btn-primary">Buy Now</button>
                                     </div>
 

@@ -14,6 +14,8 @@ import Google from "../BrandPhoneCollection/Google/Google";
 import Oppo from "../BrandPhoneCollection/Oppo/Oppo";
 import Samsung from "../BrandPhoneCollection/Samsung/Samsung";
 import Sony from "../BrandPhoneCollection/Sony/Sony";
+import ViewMore from "../Home/ViewMore/ViewMore";
+import PhoneDetails from "../PhoneDetails/PhoneDetails";
 
 
 const Routes = createBrowserRouter([
@@ -42,6 +44,11 @@ const Routes = createBrowserRouter([
                 path: "/collection",
                 element: <Collection></Collection>,
                 loader: () => fetch('http://localhost:5000/phones')
+            },
+            {
+                path:'/PhoneDetails/:id',
+                element: <PhoneDetails></PhoneDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/phones/${params.id}`)
             },
             {
                 path:'/apple',

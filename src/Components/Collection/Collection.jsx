@@ -62,6 +62,8 @@ const Collection = () => {
             }
         });
     }
+
+
     return (
         <div>
             <div className="relative bg-cover bg-center bg-[url('https://i.ibb.co/ZGQkzw0/Collection-banner.jpg')] max-h-screen">
@@ -101,10 +103,13 @@ const Collection = () => {
                                 <div className="card-body">
                                     <h2 className="card-title text-2xl font-bold font-heading text-black">{item.name}</h2>
                                     <h3 className="text-lg font-bold font-heading text-slate-600">Brand: <span className="text-xl">{item.brandName}</span></h3>
-                                    <h3 className="text-lg font-bold font-heading text-slate-600">Price: <span className="text-xl">{item.price}</span></h3>
+                                    <h3 className="text-lg font-bold font-heading text-slate-600">Price: $ <span className="text-xl">{item.price}</span></h3>
                                     <div className="card-actions flex justify-between mt-4 ">
                                         <div className="join join-horizontal gap-3 md:gap-6 mx-auto">
-                                            <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaEye></FaEye></button>
+                                            <Link to={`/phoneDetails/${item._id}`}>
+                                                <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaEye></FaEye></button>
+                                            </Link>
+
                                             {/* to={`/updatePhone/${_id}`}> */}
                                             <Link to={`/updatePhone/${item._id}`} >
                                                 <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaPen></FaPen></button>
