@@ -16,6 +16,7 @@ import Samsung from "../BrandPhoneCollection/Samsung/Samsung";
 import Sony from "../BrandPhoneCollection/Sony/Sony";
 import ViewMore from "../Home/ViewMore/ViewMore";
 import PhoneDetails from "../PhoneDetails/PhoneDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 const Routes = createBrowserRouter([
@@ -29,11 +30,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/addPhone',
-                element: <AddPhone></AddPhone>,
+                element: <PrivateRoutes><AddPhone></AddPhone></PrivateRoutes>,
             },
             {
                 path:'/updatePhone/:id',
-                element: <UpdatePhone></UpdatePhone>,
+                element: <PrivateRoutes><UpdatePhone></UpdatePhone></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/phones/${params.id}`)
             },
             {
@@ -47,7 +48,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'/PhoneDetails/:id',
-                element: <PhoneDetails></PhoneDetails>,
+                element: <PrivateRoutes><PhoneDetails></PhoneDetails></PrivateRoutes> ,
                 loader: ({params}) => fetch(`http://localhost:5000/phones/${params.id}`)
             },
             {
