@@ -5,17 +5,15 @@ import Swal from "sweetalert2";
 
 const Collection = () => {
     const phonesData = useLoaderData();
-    console.log(phonesData);
+    // to count rest of the data after delete one
+    const [phones, setPhones] = useState(phonesData);
+    console.log(phones);
     const itemsPerPage = 12;
 
     // this useState useed for load more button visibility
     const [visible, setVisible] = useState(itemsPerPage);
     // this useState using for searching phone/accesories
     const [searchPhones, setSearchPhones] = useState('');
-
-    // to count rest of the data after delete one
-    const [phones, setPhones] = useState(phonesData);
-
     // loadmore funtion
     const loadMore = () => {
         setVisible(visible => visible + itemsPerPage)
@@ -112,7 +110,7 @@ const Collection = () => {
                                                 <button className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaPen></FaPen></button>
                                             </Link>
                                             <button
-                                                onClick={() => handleDelete(item.id)}
+                                                onClick={() => handleDelete(item._id)}
                                                 className="btn text-base md:text-lg bg-black text-white hover:text-white hover:bg-black"><FaBitbucket></FaBitbucket></button>
                                         </div>
                                     </div>
