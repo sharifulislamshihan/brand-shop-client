@@ -1,7 +1,34 @@
+import { useContext, useEffect } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Register = () => {
+
+    // for create user
+    const { createUser } = useContext(AuthContext);
+
+    const handleRegister = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        co//nsole.log(name, email, password);
+
+        // creating user
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+
+
+    }
+
     return (
         <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
             <div className="flex flex-col justify-between">
@@ -12,7 +39,7 @@ const Register = () => {
                 <img src="https://i.ibb.co/t3dM5WG/register.jpg" alt="" className="p-6 h-full" />
             </div>
             <div>
-                <form className="space-y-6">
+                <form onSubmit={handleRegister} className="space-y-6">
                     <div>
                         <label className="text-sm">Full name</label>
                         <input id="name" type="text" placeholder="" className="w-full p-3 rounded " />

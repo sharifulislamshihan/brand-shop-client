@@ -1,15 +1,35 @@
+import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
+import { Result } from "postcss";
 
 
 const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
+
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log( email, password);
+        signIn(email, password)
+        .then(result =>{
+            console.log(result);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
     return (
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl mx-auto">
             <h1 className="text-5xl font-heading font-bold text-center mb-10">SIGN IN</h1>
-            <form className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6">
                 <div className="space-y-1 text-sm">
-                    <label className="text-xl font-heading font-semibold">Username</label>
-                    <input type="text" name="name" placeholder="Username" className="w-full px-4 py-3 rounded-md" />
+                    <label className="text-xl font-heading font-semibold">Email</label>
+                    <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-md" />
                 </div>
                 <div className="space-y-1 text-sm">
                     <label className="text-xl font-heading font-semibold">Password</label>

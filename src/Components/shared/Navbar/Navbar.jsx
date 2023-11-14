@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const toggleMenu = () =>{
+    const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    }
+
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch()
     }
 
     const NavLinks = <>
@@ -41,18 +49,19 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {/* {
-                        user ? <div className="flex">
-                            <img className="w-16 h-16 mt-5 rounded-lg" src={user?.photoURL} alt="no img" />
-                            <span className="mr-5 text-2xl font-pacifico hidden md:block">Hey!! {user?.displayName}</span>
-                            <Link to='/login'><a className="btn border-black font-heading font-bold text-base md:text-xl">Logout</a></Link>
+                    {
+                        user ? <div>
+                            <Link onClick={handleSignOut} to='/signin'><a className="font-heading font-semibold text-base mx-16 md:text-xl hover:text-red-500">Log Out</a></Link>
                         </div>
                             :
-                            <Link to='/login'><a className="btn border-black font-heading font-bold text-base md:text-xl">LogIn</a></Link>
-                            
-                    } */}
-                    <Link to='/signup'><a className="font-heading font-semibold text-base mx-3 md:text-xl hover:text-red-500">Register</a></Link>
-                    <Link to='/signin'><a className="font-heading font-semibold text-base mx-5 md:text-xl hover:text-red-500">LogIn</a></Link>
+                            <>
+                                <Link to='/signup'><a className="font-heading font-semibold text-base mx-3 md:text-xl hover:text-red-500">Register</a></Link>
+                                <Link to='/signin'><a className="font-heading font-semibold text-base mx-5 md:text-xl hover:text-red-500">LogIn</a></Link>
+                            </>
+
+                    }
+                    {/* <Link to='/signup'><a className="font-heading font-semibold text-base mx-3 md:text-xl hover:text-red-500">Register</a></Link>
+                    <Link to='/signin'><a className="font-heading font-semibold text-base mx-5 md:text-xl hover:text-red-500">LogIn</a></Link> */}
                 </div>
             </div>
         </div>
