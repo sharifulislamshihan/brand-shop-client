@@ -17,7 +17,7 @@ const UpdatePhone = () => {
         const updatePhone = { name, brandName, price, type, details, photo };
         console.log(updatePhone);
 
-        fetch(`http://localhost:5000/phones/${phoneData._id}`, {
+        fetch(`https://phone-crud-server.vercel.app/phones/${phoneData._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

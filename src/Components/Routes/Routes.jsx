@@ -35,7 +35,7 @@ const Routes = createBrowserRouter([
             {
                 path:'/updatePhone/:id',
                 element: <PrivateRoutes><UpdatePhone></UpdatePhone></PrivateRoutes>,
-                loader: ({params}) => fetch(`http://localhost:5000/phones/${params.id}`)
+                loader: ({params}) => fetch(`https://phone-crud-server.vercel.app/phones/${params.id}`)
             },
             {
                 path: "/myCart",
@@ -44,37 +44,37 @@ const Routes = createBrowserRouter([
             {
                 path: "/collection",
                 element: <Collection></Collection>,
-                loader: () => fetch('http://localhost:5000/phones')
+                loader: () => fetch('https://phone-crud-server.vercel.app/phones')
             },
             {
                 path:'/PhoneDetails/:id',
                 element: <PrivateRoutes><PhoneDetails></PhoneDetails></PrivateRoutes> ,
-                loader: ({params}) => fetch(`http://localhost:5000/phones/${params.id}`)
+                loader: ({params}) => fetch(`https://phone-crud-server.vercel.app/phones/${params.id}`)
             },
             {
                 path:'/apple',
                 element: <Apple></Apple>,
-                loader: () => fetch('http://localhost:5000/phones')
+                loader: () => fetch('https://phone-crud-server.vercel.app/phones')
             },
             {
                 path: "/google",
                 element:<Google></Google>,
-                loader: () => fetch('http://localhost:5000/phones')
+                loader: () => fetch('https://phone-crud-server.vercel.app/phones')
             },
             {
                 path: '/oppo',
                 element: <Oppo></Oppo>,
-                loader: () => fetch('http://localhost:5000/phones'),
+                loader: () => fetch('https://phone-crud-server.vercel.app/phones'),
             },
             {
                 path: '/samsung',
                 element: <Samsung></Samsung>,
-                loader: () => fetch('http://localhost:5000/phones'),
+                loader: () => fetch('https://phone-crud-server.vercel.app/phones'),
             },
             {
                 path: '/sony',
                 element: <Sony></Sony>,
-                loader: () => fetch('http://localhost:5000/phones'),
+                loader: () => fetch('https://phone-crud-server.vercel.app/phones'),
             },
             {
                 path: '/aboutUs',

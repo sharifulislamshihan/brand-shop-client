@@ -3,6 +3,7 @@ import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 import { onAuthStateChanged } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
 
@@ -15,15 +16,38 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        co//nsole.log(name, email, password);
+        //console.log(name, email, password);
+
+        // password validation
+        if (password.length < 6) {
+            Swal.fire("Password should be atleast 6 characters");
+            return;
+        }
+        // !/^(?=.*[A-Z])(?=.*[!@#$%^&*])(.{6,})$/.test(password)
+        else if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*])/.test(password)) {
+            Swal.fire("Password must contain atleast one capital letter and one special character");
+            return;
+        }
+
 
         // creating user
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+                Swal.fire('Account created Successfully');
             })
             .catch(error => {
                 console.error(error);
+
+                if (errorCode === 'auth/email-already-in-use') {
+                    Swal.fire('Error', 'Email is already in use.', 'error');
+                } else if (errorCode === 'auth/invalid-email') {
+                    Swal.fire('Error', 'Invalid email address.', 'error');
+                } else if (errorCode === 'auth/weak-password') {
+                    Swal.fire('Error', 'Password is too weak. It should be at least 6 characters.', 'error');
+                } else {
+                    Swal.fire('Error', 'An error occurred during registration.', 'error');
+                }
             })
 
 

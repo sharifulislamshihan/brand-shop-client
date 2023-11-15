@@ -1,27 +1,67 @@
 import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(location);
+
+    const successfulLogin = () => {
+        Swal.fire('Login Successful')
+    }
 
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log( email, password);
+
+        if (!email || !password) {
+            Swal.fire('Email and password are required.', { position: "top-right" });
+            return;
+        }
+
+
+        console.log(email, password);
         signIn(email, password)
-        .then(result =>{
-            console.log(result);
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(result => {
+                console.log(result);
+
+                // navigate after login
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                if (error.code === 'auth/invalid-email') {
+                    Swal.fire('Invalid email.')
+                }
+                else if (error.code === 'auth/wrong-password') {
+                    Swal.fire('Invalid password.')
+                }
+                else {
+                    Swal.fire('Invalid email or password.');
+                }
+                console.log(error);
+                console.error(error);
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(userCredential => {
+                console.log(userCredential);
+                successfulLogin();
+                navigate('/');
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
     return (
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl mx-auto">
@@ -29,11 +69,11 @@ const Login = () => {
             <form onSubmit={handleLogin} className="space-y-6">
                 <div className="space-y-1 text-sm">
                     <label className="text-xl font-heading font-semibold">Email</label>
-                    <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-md" />
+                    <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-md" required />
                 </div>
                 <div className="space-y-1 text-sm">
                     <label className="text-xl font-heading font-semibold">Password</label>
-                    <input type="password" name="password" placeholder="Password" className="w-full px-4 py-3 rounded-md" />
+                    <input type="password" name="password" placeholder="Password" className="w-full px-4 py-3 rounded-md" required />
                     <div className="flex justify-end text-sm">
                         <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                     </div>
@@ -46,7 +86,7 @@ const Login = () => {
                 <div className="flex-1 h-px sm:w-16 "></div>
             </div>
             <div className="flex justify-center space-x-4">
-                <button className="btn text-2xl"><FaGoogle></FaGoogle> </button>
+                <button onClick={handleGoogleSignIn} className="btn text-2xl"><FaGoogle></FaGoogle> </button>
 
 
                 <button className="btn text-2xl"><FaTwitter></FaTwitter> </button>

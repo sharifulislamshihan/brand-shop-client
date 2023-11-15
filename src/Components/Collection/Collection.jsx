@@ -43,7 +43,7 @@ const Collection = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/phones/${id}`, {
+                fetch(`https://phone-crud-server.vercel.app/phones/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

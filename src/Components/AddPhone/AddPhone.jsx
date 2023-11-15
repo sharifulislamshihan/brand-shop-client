@@ -15,7 +15,7 @@ const AddPhone = () => {
         console.log(newPhone);
 
         // send phone data to server
-        fetch('http://localhost:5000/phones', {
+        fetch('https://phone-crud-server.vercel.app/phones', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
