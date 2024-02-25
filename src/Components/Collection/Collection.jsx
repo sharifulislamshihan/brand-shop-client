@@ -5,9 +5,10 @@ import Swal from "sweetalert2";
 
 const Collection = () => {
     const phonesData = useLoaderData();
+    console.log(phonesData);
     // to count rest of the data after delete one
     const [phones, setPhones] = useState(phonesData);
-    console.log(phones);
+
     const itemsPerPage = 12;
 
     // this useState useed for load more button visibility
@@ -19,16 +20,49 @@ const Collection = () => {
         setVisible(visible => visible + itemsPerPage)
     }
 
-    //search funtion
+    //search funtionn
     const handleSearchPhones = e => {
         setSearchPhones(e.target.value);
     }
 
-    const filterData = phonesData.filter(
-        item =>
-            item.name.toLowerCase().includes(searchPhones.toLowerCase()) ||
-            item.brandName.toLowerCase().includes(searchPhones.toLowerCase())
-    );
+    // console.log(typeof phonesData.toArray())
+    // if (!Array.isArray(phonesData)) {
+    //     // Handle the case where phonesData is not an array
+    //     console.error('phonesData is not an array');
+    //     return;
+    // }
+    // const FilteredPhone = phonesData.filter((item) => {
+    //     item.name.toLowerCase().includes(searchPhones.toLowerCase()) ||
+    //         item.brandName.toLowerCase().includes(searchPhones.toLowerCase())
+    // }
+    //     // console.log(item)
+    // );
+
+
+    // set the slides data in the filteredBooks
+    let filteredPhones = phones;
+    //console.log(filteredPhones);
+
+    // // const { _id } = filteredBooks;
+    // /**
+    //  * You can find here book using any input field. you do not need to fill up the both input field
+    //  */
+
+    // // searching books using the bookName
+    // if (searchPhones) {
+    //     filteredPhones = filteredPhones.filter(
+    //         // eslint-disable-next-line react/prop-types
+    //         (phone) => phone.name.toLowerCase().includes(searchPhones.toLowerCase())
+    //     )
+    // }
+
+    // // searching books using the category
+    // if (searchPhones) {
+    //     filteredPhones = filteredPhones.filter(
+    //         (phone) => phone.brandName.toLowerCase().includes(searchPhones.toLowerCase())
+    //     );
+    // }
+
 
     //const { _id } = filterData;
     const handleDelete = id => {
@@ -43,7 +77,7 @@ const Collection = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://phone-crud-server.vercel.app/phones/${id}`, {
+                fetch(`https://phone-crud-server-j273zae4x-shariful-islam-shihans-projects.vercel.app/phones/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -95,10 +129,10 @@ const Collection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-7 my-20 mx-10 md:mx-20">
                 {
-                    filterData.slice(0, visible).map(item => (
+                    filteredPhones.slice(0, visible).map(item => (
                         <div key={item.id} >
                             <div className="card lg:card-side bg-base-100 h-full hover:shadow-xl my-4">
-                                <figure><img className="w-48" src={item.photo} alt="Shoes" /></figure>
+                                <figure><img className="w-48" src={item.photo} alt="" /></figure>
 
                                 <div className="card-body">
                                     <h2 className="card-title text-2xl font-bold font-heading text-black">{item.name}</h2>
@@ -127,7 +161,7 @@ const Collection = () => {
                 }
             </div>
             {
-                visible < filterData.length && (
+                visible < filteredPhones.length && (
 
                     <div className="flex justify-center mb-10">
                         <button onClick={loadMore} className="btn btn-neutral bg-black text-white">Load More</button>

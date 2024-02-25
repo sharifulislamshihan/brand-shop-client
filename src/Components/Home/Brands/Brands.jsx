@@ -4,7 +4,7 @@ const Brands = () => {
     return (
         <div className=" my-16">
             <h3 className="text-5xl font-heading font-extrabold text-center">BRANDS</h3>
-            <div className="grid grid-cols-5 mx-5 gap-5 my-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 mx-5 gap-5 my-12">
                 {/* Apple */}
                 <Link to='/apple'>
                     <div>

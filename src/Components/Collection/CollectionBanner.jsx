@@ -5,7 +5,7 @@ const CollectionBanner = () => {
         <div className="relative bg-cover bg-center bg-[url('https://i.ibb.co/ZGQkzw0/Collection-banner.jpg')] max-h-screen">
             <div className="absolute inset-0 bg-black opacity-70"></div>
 
-            <div className="relative z-10 text-white text-center py-16 py-10 lg:py-52">
+            <div className="relative z-10 text-white text-center py-16 lg:py-52">
                 <h2 className="text-2xl md:text-4xl font-heading font-medium mb-12">SEARCH YOUR PHONE NOW</h2>
                 <div>
                     {/* <div className="form-control"> */}

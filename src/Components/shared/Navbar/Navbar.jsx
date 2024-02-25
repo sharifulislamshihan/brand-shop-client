@@ -51,7 +51,7 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ? <div>
-                            <Link onClick={handleSignOut} to='/signin'><a className="font-heading font-semibold text-base mx-16 md:text-xl hover:text-red-500">Log Out</a></Link>
+                            <Link onClick={handleSignOut} to='/signin'><a className="font-heading font-semibold text-sm mx-2 md:mx-16 md:text-xl hover:text-red-500">Log Out</a></Link>
                         </div>
                             :
                             <>

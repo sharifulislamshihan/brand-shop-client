@@ -42,6 +42,7 @@ const Routes = createBrowserRouter([
                 element: <MyCart></MyCart>,
             },
             {
+                // todo: need to remove the local link
                 path: "/collection",
                 element: <Collection></Collection>,
                 loader: () => fetch('https://phone-crud-server.vercel.app/phones')
