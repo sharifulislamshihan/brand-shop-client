@@ -1,8 +1,18 @@
-# React + Vite
+# React Brand Shop using Firebase NodeJS MongoDB CLIENT SIDE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Available Links
+
+-  [Live Link Netlify](https://65549cc056a951006efb46ff--effulgent-crisp-c1ffbb.netlify.app/) 
+- [Server Side Code Link](https://github.com/sharifulislamshihan/brand-shop-server) Click here
+
+ # Key features
+
+ - You can see product Brand wise by clicking brand.
+ - In the collection route You can search Product
+ - You can watch details, edit or delete product from collection route
+ - Before doing any operation you must need to Creat an account if you dont have any
+ - private route will direct you to login if you are not logged in
+
+   More features will be available soon.
